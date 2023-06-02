@@ -3261,3 +3261,17 @@ ol {
 	color: white;
 	padding-top: 15px;
 }
+
+.imageResponsive{
+	margin-left: -45px;
+	 margin-top: -55px;
+}
+
+  @media only screen and (max-width: 600px) {
+	.imageResponsive{
+		margin-left: -50px;
+		margin-top: -30px;
+		width: 200px;
+		height: 100px;
+	}
+  }
