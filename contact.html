@@ -173,17 +173,17 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-lg-6">
+                <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="#">
-                            <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Email">
-                            <input type="text" placeholder="Website">
-                            <textarea placeholder="Comment"></textarea>
-                            <button type="submit">Submit</button>
+                        <form onsubmit="sendEmail(); reset(); return false;">
+                            <input type="text" id="name" placeholder="Name" required>
+                            <input type="email" id="email" placeholder="Email" required>
+                            <input type="text" id="phone" placeholder="phone no" required>
+                            <textarea id="message" rows="4" placeholder="How can we help you?" required></textarea>
+                            <button type="submit">Send</button>
                         </form>
                     </div>
-                </div> -->
+                </div>
             </div>
             <div class="map">
                 <iframe src="https://maps.google.com/maps?width=600&height=400&hl=en&q=Posh Health Club, SCO-52, 53, Old Judicial Complex Civil Lines Rd, near Axis Bank, Civil Lines, Gurugram, Haryana 122001&t=&z=14&ie=UTF8&iwloc=B&output=embed"
@@ -323,6 +323,24 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "threegrowingmusketeers@gmail.com",
+                Password : "9DC24B7B81C67DE4963B2DB937CC2D0D504D",
+                From : 'threegrowingmusketeers@gmail.com',
+                To :['poshhealthclub@gmail.com','maan.shokeen@poshhealthclub.com','ankitmaheshwari27@gmail.com'],
+                ReplyFrom : document.getElementById("email").value,
+                Subject : document.getElementById("name").value + "- Appointment with Posh health club",
+                Body : "Name: " + document.getElementById("name").value
+                +"<br> Email: " + document.getElementById("email").value
+                +"<br> Phone no: " + document.getElementById("phone").value
+                +"<br> Message: " + document.getElementById("message").value
+            });
+        }
+    </script>
 
 
 
